@@ -4,13 +4,13 @@
 
      function onDeviceReady() {
 			
-			
+			alert(123);
          pushNotification = window.plugins.pushNotification;
          
          
          if ( device.platform == 'android' || device.platform == 'Android' )
                     {
-                        
+                        alert(12);
                         pushNotification.register(
                             successHandler,
                             errorHandler, {
@@ -21,6 +21,7 @@
                     }
             else
                 {
+                    alert(121);
                         
                         pushNotification.register(
                             tokenHandler,
