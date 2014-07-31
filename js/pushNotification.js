@@ -53,7 +53,7 @@
              }
 
 
-//Android
+//Android push notification handler
     function onNotificationGCM(e) {
         $("#app-status-ul").append('<li>EVENT -> RECEIVED:' + e.event + '</li>');
 
@@ -66,6 +66,11 @@
                 // Your GCM push server needs to know the regID before it can push to this device
                 // here is where you might want to send it the regID for later use.
                 alert( e.regid);
+                
+                var reqData = {"UserId":"","DeviceId":""+e.regid+"","AppType":"android","IPAddress":""};
+                
+                ajaxcall("UpdateUserDetailsAndFetchDefaultCountry",reqData,IsDeviceRegResponseSuccess,errorfunction);
+                
             }
         break;
 
@@ -105,3 +110,12 @@
         break;
       }
     }
+
+
+    function IsDeviceRegResponseSuccess(result)
+        {
+
+            alert(result);
+
+
+        }
