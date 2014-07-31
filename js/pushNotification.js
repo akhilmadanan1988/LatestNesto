@@ -6,6 +6,7 @@
 			
 			alert(123);
          alert(device.platform);
+         
          pushNotification = window.plugins.pushNotification;
          
            alert(device.platform);
