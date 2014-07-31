@@ -122,7 +122,8 @@
             if(resMessage == "Success")
                 {
                    
-                       
+                       alert(result.ApiResponse.Message);
+)
                 }
 
 
