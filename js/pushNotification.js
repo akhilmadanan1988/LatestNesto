@@ -7,7 +7,7 @@
 			alert(123);
          pushNotification = window.plugins.pushNotification;
          
-         
+           alert(1222);
          if ( device.platform == 'android' || device.platform == 'Android' )
                     {
                         alert(12);
