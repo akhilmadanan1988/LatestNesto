@@ -118,7 +118,7 @@
 
           
             var resMessage = result.ApiResponse.Message;            
-           
+           alert(result.ApiResponse.Message);
             if(resMessage == "Success")
                 {
                    
