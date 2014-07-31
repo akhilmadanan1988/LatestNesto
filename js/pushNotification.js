@@ -81,13 +81,16 @@
             if ( e.foreground )
             {
                 $("#app-status-ul").append('<li>--INLINE NOTIFICATION--' + '</li>');
-
+                
+                alert("notrification");
                 // if the notification contains a soundname, play it.
-                var my_media = new Media("/android_asset/www/"+e.soundname);
-                my_media.play();
+               // var my_media = new Media("/android_asset/www/"+e.soundname);
+               // my_media.play();
             }
             else
             {  // otherwise we were launched because the user touched a notification in the notification tray.
+              alert("notrification123456");
+                
                 if ( e.coldstart )
                 {
                     $("#app-status-ul").append('<li>--COLDSTART NOTIFICATION--' + '</li>');
