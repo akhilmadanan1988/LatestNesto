@@ -12,7 +12,7 @@
          
          if ( device.platform == 'android' || device.platform == 'Android' )
                     {
-                        alert("android");
+                      
                         pushNotification.register(
                             successHandler,
                             errorHandler, {
@@ -23,7 +23,7 @@
                     }
             else
                 {
-                    alert("IOS");
+                    
                         
                         pushNotification.register(
                             tokenHandler,
@@ -67,7 +67,7 @@
                 // here is where you might want to send it the regID for later use.
                 alert( e.regid);
                 
-                var reqData = {"UserId":"","DeviceId":""+e.regid+"","AppType":"android","IPAddress":""};
+                var reqData ={"AppType":"1","DeviceId":""+e.regid+"","IPAddress":"","UserId":"0"};
                 
                 ajaxcall("UpdateUserDetailsAndFetchDefaultCountry",reqData,IsDeviceRegResponseSuccess,errorfunction);
                 
@@ -123,6 +123,6 @@
     function errorfunction()
         {
 
-                alert(error);
+                alert(1233);
 
         }
