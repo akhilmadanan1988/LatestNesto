@@ -18,9 +18,10 @@
         <preference name="AutoHideSplashScreen" value="false" />
         <preference name="SplashScreenDelay" value="10000"/>
         <gap:plugin name="org.apache.cordova.splashscreen" />
+        <gap:plugin name="org.apache.cordova.device" version="0.2.8" />
         
        <!--External plugins-->
-        <gap:plugin name="org.apache.cordova.device" version="0.2.8" />
+        
         <gap:plugin name="org.li8.inappbrowser" version="0.1" />        
         <gap:plugin name="com.phonegap.plugins.pushplugin" version="2.1.1" />
         
