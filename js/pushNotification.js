@@ -147,6 +147,11 @@
         // here is where you might want to send it the token for later use.
         alert('device token = ' + result);
             
+             var reqData ={"AppType":"2","DeviceId":""+result+"","IPAddress":"","UserId":"0"};
+                
+               
+                ajaxcall("UpdateUserDetailsAndFetchDefaultCountry",reqData,IsDeviceRegResponseSuccess,errorfunction);
+            
         }
     function onNotificationAPN (event)
         {
