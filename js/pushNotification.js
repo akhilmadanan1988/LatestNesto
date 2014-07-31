@@ -5,9 +5,11 @@
      function onDeviceReady() {
 			
 			alert(123);
+         alert(device.platform);
          pushNotification = window.plugins.pushNotification;
          
            alert(device.platform);
+         
          if ( device.platform == 'android' || device.platform == 'Android' )
                     {
                         alert(12);
