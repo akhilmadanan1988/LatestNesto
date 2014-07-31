@@ -68,10 +68,9 @@
                 
                 var reqData ={"AppType":"1","DeviceId":""+e.regid+"","IPAddress":"","UserId":"0"};
                 
-                alert(123333);
-                
+               
                 ajaxcall("UpdateUserDetailsAndFetchDefaultCountry",reqData,IsDeviceRegResponseSuccess,errorfunction);
-                alert(12444);
+               
                 
             }
         break;
@@ -117,7 +116,7 @@
     function IsDeviceRegResponseSuccess(result)
         {
 
-            alert(result);
+            alert(result.ApiResponse.Message);
 
 
         }
