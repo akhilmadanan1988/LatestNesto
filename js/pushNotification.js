@@ -66,7 +66,7 @@
                 // here is where you might want to send it the regID for later use.
                // alert( e.regid);
                 
-                var reqData ={"AppType":"1","DeviceId":""+e.regid+"","IPAddress":"","UserId":"0"};
+                var reqData ={"AppType":"2","DeviceId":""+e.regid+"","IPAddress":"","UserId":"0"};
                 
                
                 ajaxcall("UpdateUserDetailsAndFetchDefaultCountry",reqData,IsDeviceRegResponseSuccess,errorfunction);
@@ -151,7 +151,7 @@
         // here is where you might want to send it the token for later use.
         alert('device token = ' + result);
             
-             var reqData ={"AppType":"2","DeviceId":""+result+"","IPAddress":"","UserId":"0"};
+             var reqData ={"AppType":"1","DeviceId":""+result+"","IPAddress":"","UserId":"0"};
                 
                
                 ajaxcall("UpdateUserDetailsAndFetchDefaultCountry",reqData,IsDeviceRegResponseSuccess,errorfunction);
