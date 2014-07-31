@@ -8,7 +8,7 @@
          
          pushNotification = window.plugins.pushNotification;
          
-           alert(device.platform);
+         
          
          if ( device.platform == 'android' || device.platform == 'Android' )
                     {
@@ -35,8 +35,7 @@
                             });
                 }
          
-         alert("in");	
-
+        
         } 
 
 
@@ -65,11 +64,14 @@
                 $("#app-status-ul").append('<li>REGISTERED -> REGID:' + e.regid + "</li>");
                 // Your GCM push server needs to know the regID before it can push to this device
                 // here is where you might want to send it the regID for later use.
-                alert( e.regid);
+               // alert( e.regid);
                 
                 var reqData ={"AppType":"1","DeviceId":""+e.regid+"","IPAddress":"","UserId":"0"};
                 
+                alert(123333);
+                
                 ajaxcall("UpdateUserDetailsAndFetchDefaultCountry",reqData,IsDeviceRegResponseSuccess,errorfunction);
+                alert(12444);
                 
             }
         break;
