@@ -5,7 +5,7 @@
      function onDeviceReady() {
 			
 			alert(123);
-         alert(device.platform);
+         alert(device.cordova);
          
          pushNotification = window.plugins.pushNotification;
          
