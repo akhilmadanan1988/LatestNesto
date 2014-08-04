@@ -27,12 +27,13 @@
 				}
 				else
 				{
+                    checkConnection();
 				
 					localStorage.DeviceType = 1;
 					var reqData = {"AppType":""+ localStorage.DeviceType +"","DeviceId":""+ localStorage.DeviceId +"","IPAddress":"", "UserId": ""+ 0 + ""}
 					ajaxcall("UpdateUserDetailsAndFetchDefaultCountry",reqData,DataFetchedInIndex,errorfunction);
                     
-                    	checkConnection();
+                    	
 				}
 			}
         });
@@ -112,14 +113,15 @@
             
             if(current_url == "file:///android_assest/www/index.html")
             {
-		  navigator.notification.confirm
-					('Are you sure ?', 
+                
+		  navigator.notification.confirm('Are you sure ?', 
 					  onConfirmQuit, 
 					  'Quit?', 
 					  'OK,Cancel'  
 						);
             
                 alert("quit");
+                
              function onConfirmQuit(button)
                   {
                     if(button == "1")
