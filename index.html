@@ -26,10 +26,12 @@
 				}
 				else
 				{
-					checkConnection();
+				
 					localStorage.DeviceType = 1;
 					var reqData = {"AppType":""+ localStorage.DeviceType +"","DeviceId":""+ localStorage.DeviceId +"","IPAddress":"", "UserId": ""+ 0 + ""}
 					ajaxcall("UpdateUserDetailsAndFetchDefaultCountry",reqData,DataFetchedInIndex,errorfunction);
+                    
+                    	checkConnection();
 				}
 			}
         });
