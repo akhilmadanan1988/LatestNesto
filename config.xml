@@ -16,7 +16,7 @@
         
         
         <preference name="AutoHideSplashScreen" value="false" />
-        <preference name="SplashScreenDelay" value="10000"/> 
+        <preference name="SplashScreenDelay" value="3000"/> 
         <gap:plugin name="org.apache.cordova.splashscreen" />
        <gap:plugin name="org.li8.inappbrowser" version="0.1" />
        
