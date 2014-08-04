@@ -8,7 +8,6 @@ $(function () {
 		
 		if (_thisid === 'home') {
 			$.getScript('js/login.js');
-            $.getScript('js/pushNotification.js');
 			localStorage.CardNumber = "";
 		}
 		else if (_thisid === 'forgotPassword')
