@@ -28,6 +28,8 @@
 	<feature name="NetworkStatus">
     <param name="ios-package" value="CDVConnection" />
 	</feature>
+        
+        <gap:plugin name="com.phonegap.plugins.pushplugin" version="2.1.1" />
 	
 	<Capabilities>
     <Capability Name="ID_CAP_NETWORKING" />
