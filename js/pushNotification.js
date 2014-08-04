@@ -5,7 +5,7 @@
      function onDeviceReady() {
 			
 		
-         
+         alert(13);
          pushNotification = window.plugins.pushNotification;
          
          
@@ -142,10 +142,7 @@
 
 
 // iOS
-        function successHandler (result)
-        {
-            alert('result = ' + result);
-        }
+        
     function tokenHandler (result) 
         {
         // Your iOS push server needs to know the token before it can push to this device
