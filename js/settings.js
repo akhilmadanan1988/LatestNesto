@@ -1,5 +1,5 @@
 var email_pattern = /^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
-var legalCharacters_pattern = /[a-zA-Z0-9!”$&’@#%=?&quot;().*\+\-,\/;\[\\\]\^_`{|}~ ]+$/;
+var legalCharacters_pattern = /[a-zA-Z0-9!ï¿½$&ï¿½@#%=?&quot;().*\+\-,\/;\[\\\]\^_`{|}~ ]+$/;
 
 $(document).ready(function () {
     onSettingsLoad();
@@ -99,7 +99,7 @@ function changeNotification() {
 }
 
 function IsChangeNotificationResponseSuccess(result) {
-    alert(result.ApiResponse.StatusCode);
+    //alert(result.ApiResponse.StatusCode);
     if (result.ApiResponse.StatusCode == 1) {
 
     }
