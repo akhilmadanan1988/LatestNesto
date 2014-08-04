@@ -12,6 +12,14 @@
     <script type="text/javascript" src="js/bootstrap.min.js"></script>
     <script type="text/javascript" src="js/activate-accordian.js"></script>
     <script type="text/javascript" src="js/custom.js"></script>
+   
+	<script type="text/javascript" charset="utf-8"> 
+                document.addEventListener("backbutton", function(e){
+                e.preventDefault();
+                navigator.app.backHistory();
+                }, true);
+
+        </script>
 </head>
 <body>
     <div data-role="page" id="activateAccount" class="ui-responsive-panel">
