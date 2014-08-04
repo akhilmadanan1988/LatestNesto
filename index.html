@@ -61,6 +61,8 @@
 			$('#imgPromotionImage2').attr('src', localStorage.PromotionImage2);
             
 			navigator.splashscreen.hide();
+            
+             document.addEventListener("backbutton", onBackKeyDown, false);
 		}
 		
 		function errorfunction()
@@ -109,6 +111,27 @@
                             }
                             
                         }
+        
+        function onBackKeyDown()
+            {
+                  document.addEventListener("backbutton", function () { 
+                                              navigator.notification.confirm(
+                                                        'Are you sure ?', 
+                                                        onConfirmQuit, 
+                                                        'Quit?', 
+                                                        'OK,Cancel'  
+                                                    );
+                                            }, true); 
+
+
+                                    function onConfirmQuit(button){
+                                       if(button == "1")
+                                            {
+                                        navigator.app.exitApp(); 
+                                            }
+                                            }
+                
+            }
 
 		
 		//	navigator.splashscreen.hide();
