@@ -57,6 +57,7 @@
             
           else
             {
+                console.log("in else");
             
 			if(localStorage != null)
 			{
@@ -67,6 +68,8 @@
 				else
 				{
                     
+                     console.log("in local");
+            
 				
 					localStorage.DeviceType = 1;
 					var reqData = {"AppType":""+ localStorage.DeviceType +"","DeviceId":""+ localStorage.DeviceId +"","IPAddress":"", "UserId": ""+ 0 + ""}
