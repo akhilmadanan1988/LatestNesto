@@ -1,15 +1,13 @@
 $(function () {
-    var all_pages = '#home,#forgotPassword,#activateAccount,#PointDetails,#ProfilePage, #tabArea,#promotions,#gallery';
+    var all_pages = '#home,#forgotPassword,#activateAccount,#PointDetails,#ProfilePage, #tabArea,#promotions,#gallery,#settings,#about';
 
     $(document).off('pageshow', all_pages).on('pageshow', all_pages, function myCallback() {
         var _thisid = this.id; 
-		alert(_thisid);
+		//alert(_thisid);
 		$.getScript('js/ajaxCall.js');
 		
 		if (_thisid === 'home') {
 			$.getScript('js/login.js');
-            $.getScript('js/pushNotification.js');
-            
 			localStorage.CardNumber = "";
 		}
 		else if (_thisid === 'forgotPassword')
@@ -28,9 +26,21 @@ $(function () {
 		{
 			$.getScript('js/profile.js');
 		}
-
-		$.getScript('js/aboutUs.js');
-        $.getScript('js/settings.js');
+		else if (_thisid === 'tabArea') {
+		    $.getScript('js/editProfile.js');
+		}
+		else if (_thisid === 'about') {
+		    $.getScript('js/aboutUs.js');
+		}
+		else if (_thisid === 'settings') {
+		    $.getScript('js/settings.js');
+		}
+		else if (_thisid === 'promotions') {
+		    $.getScript('js/promotions.js');
+		}
+		else if (_thisid === 'gallery') {
+		    $.getScript('js/gallery.js');
+		}
 		
 		//$.getScript('js/profile.js');
 		//$.getScript('http://crypto-js.googlecode.com/svn/tags/3.1.2/build/rollups/tripledes.js');
@@ -60,9 +70,7 @@ $(function () {
     });
 });
 
-
-function EncryptPassword(pass)
- {    
+function EncryptPassword(pass) {    
 	var saltReturn = '';
 	var salt1='DVDHTHTLNT';
 	  
@@ -88,11 +96,8 @@ function EncryptPassword(pass)
 	}    
 	return SHA256(saltReturn );
   }
-         
         
-        
-function SHA256(s)
-{
+function SHA256(s) {
 	var chrsz   = 8;
 	var hexcase = 0;
 	 
@@ -223,7 +228,6 @@ function SHA256(s)
 	 return encrypt;  
 }  
 
-
 function IsValidInteger(input) {
     if (input.trim() != '') {
         if (input.match(/(^[0-9]*$)/i) != null) {
@@ -264,16 +268,14 @@ function IsValidEmail(mail) {
     }
 }
 
-function  CheckUserExistanceAndNavigate()
-{
+function  CheckUserExistanceAndNavigate() {
+	if(localStorage.CardNumber != "")
+	{
+		window.location="pointDetails.html";
+	}
+	else
+	{
+		window.location="index.html";
+	}
+}
 
-if(localStorage.CardNumber != "")
-{
-	window.location="pointDetails.html";
-}
-else
-{
-	window.location="index.html";
-}
-
-}

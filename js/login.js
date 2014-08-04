@@ -1,3 +1,9 @@
+$(document).ready(function () {
+
+	$('#imgPromotionImage1').attr('src', localStorage.PromotionImage1)
+    $('#imgPromotionImage2').attr('src', localStorage.PromotionImage2)
+    
+});
 function login()
 {
 	if ($('#txtCardNumber').val() != "") {
@@ -46,9 +52,19 @@ function IsLoginResponseSuccess(result)
 		localStorage.CustomerName = result.UserDetail.CustomerName;
 		localStorage.Email = result.UserDetail.Email;
 		localStorage.CountryID = result.UserDetail.CountryID;
+		localStorage.UserId = result.UserDetail.UserId;
 		
+		
+
 		//Save Gift Details in local storage
 		localStorage.GiftStatus = result.EligibleGift.Status;
+
+
+	    //TODO: Need to remove if the data is loaded propely
+		localStorage.UserId = 3;
+		localStorage.DeviceId = "DeviceId6";
+		localStorage.version = "V1.0.0";
+		
 		if(localStorage.GiftStatus == "Success")
 		{
 			localStorage.GiftImageURL = result.EligibleGift.GiftImageUrl;
