@@ -18,16 +18,24 @@
 	<script type="text/javascript" charset="utf-8">
 		$(document).ready(function () {
             //alert(localStorage.CardNumber);
-			if(typeof localStorage.CardNumber != 'undefined'|| localStorage.CardNumber != "")
-			{
-				window.location="pointDetails.html";
-			}
-			else
-			{
-				localStorage.DeviceType = 1;
-				var reqData = {"AppType":""+ localStorage.DeviceType +"","DeviceId":""+ localStorage.DeviceId +"","IPAddress":"", "UserId": ""+ 0 + ""}
-				ajaxcall("UpdateUserDetailsAndFetchDefaultCountry",reqData,DataFetchedInIndex,errorfunction);
-			}
+            
+            document.addEventListener("deviceready", onDeviceReady, true);
+        
+        function onDeviceReady()
+            {
+                
+                if(typeof localStorage.CardNumber != 'undefined'|| localStorage.CardNumber != "")
+                 {
+                    window.location="pointDetails.html";
+                 }
+                else
+                 {
+                    localStorage.DeviceType = 1;
+                    var reqData = {"AppType":""+ localStorage.DeviceType +"","DeviceId":""+ localStorage.DeviceId +"","IPAddress":"", "UserId": ""+ 0 + ""}
+                    ajaxcall("UpdateUserDetailsAndFetchDefaultCountry",reqData,DataFetchedInIndex,errorfunction);
+                 }
+            
+            }
 			
 		});
 		
@@ -44,8 +52,10 @@
 						localStorage.PromotionImage2 = result.PromotionList[1].PromotionThumbnail;
 				}
 			}
+            
 			$('#imgPromotionImage1').attr('src', localStorage.PromotionImage1);
 			$('#imgPromotionImage2').attr('src', localStorage.PromotionImage2);
+            
 			navigator.splashscreen.hide();
 		}
 		
@@ -54,9 +64,7 @@
 			navigator.splashscreen.hide();
 		}
 		
-		//document.addEventListener("deviceready", onDeviceReady, true);
-        // PhoneGap is ready
-        //function onDeviceReady() {
+		
 		
 		//	navigator.splashscreen.hide();
          //   var db = window.openDatabase("nesto", "1.0", "Nesto DB", 1000000);
