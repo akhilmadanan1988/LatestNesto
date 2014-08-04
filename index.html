@@ -104,7 +104,7 @@
         
         function onBackKeyDown()
 		{
-			  
+			  alert($.mobile.activePage[0].baseURI);
 		  navigator.notification.confirm
 					('Are you sure ?', 
 					  onConfirmQuit, 
@@ -114,7 +114,7 @@
             
              function onConfirmQuit(button)
                   {
-                     if(button == "1")
+                    if(button == "1")
                      {
 
                          navigator.app.exitApp(); 
