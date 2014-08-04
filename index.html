@@ -87,7 +87,24 @@
                             
                             if(states[Connection.NONE]     = 'No network connection')
                             {
-                                alert('Connection type: ' + states[networkState]);
+                                //alert('Connection type: ' + states[networkState]);
+                                
+                                 document.addEventListener("backbutton", function () { 
+                                              navigator.notification.confirm(
+                                                        'No internet connect. please connect the internet and relaunch the application.', 
+                                                        onConfirmQuit, 
+                                                        'No internet connect', 
+                                                        'OK,Cancel'  
+                                                    );
+                                            }, true); 
+
+
+                                    function onConfirmQuit(button){
+                                       if(button == "1")
+                                            {
+                                        navigator.app.exitApp(); 
+                                            }
+                                            }
                                 
                             }
                             
