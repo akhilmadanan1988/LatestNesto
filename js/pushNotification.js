@@ -1,7 +1,7 @@
   document.addEventListener("deviceready", onDeviceReady, true);
 
     var pushNotification;
-
+alert(12345);
      function onDeviceReady() {
 			
 		
