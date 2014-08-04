@@ -25,6 +25,13 @@
             {
                 //alert(localStorage.CardNumber);
                 
+                if(typeof(Storage) !== "undefined") {
+    alert("storage available");
+} else {
+    alert("storage not available");
+    // Sorry! No Web Storage support..
+}
+                
                checkConnection(); 
                 
                 
