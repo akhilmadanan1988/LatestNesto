@@ -17,22 +17,28 @@
 	
 	<script type="text/javascript" charset="utf-8">
 		$(document).ready(function () {
-            alert(localStorage.CardNumber);
-			if(localStorage != null)
-			{
-				if(localStorage.CardNumber != '')
-				{
-					window.location="pointDetails.html";
-				}
-				else
-				{
-					checkConnection();
-					localStorage.DeviceType = 1;
-					var reqData = {"AppType":""+ localStorage.DeviceType +"","DeviceId":""+ localStorage.DeviceId +"","IPAddress":"", "UserId": ""+ 0 + ""}
-					ajaxcall("UpdateUserDetailsAndFetchDefaultCountry",reqData,DataFetchedInIndex,errorfunction);
-				}
-			}
-        });
+            alert(localStorage);
+                    
+               checkConnection(); 
+                
+                if(localStorage != null)
+                {
+                   if(typeof localStorage.CardNumber != 'undefined' || localStorage.CardNumber != '')
+                 {
+                    window.location="pointDetails.html";
+                 }
+                else
+                 {
+                    localStorage.DeviceType = 1;
+                    var reqData = {"AppType":""+ localStorage.DeviceType +"","DeviceId":""+ localStorage.DeviceId +"","IPAddress":"", "UserId": ""+ 0 + ""}
+                    ajaxcall("UpdateUserDetailsAndFetchDefaultCountry",reqData,DataFetchedInIndex,errorfunction);
+                 }
+            
+                }
+                
+       
+			
+		});
 		
 		function DataFetchedInIndex(result)
 		{
@@ -53,7 +59,7 @@
             
 			navigator.splashscreen.hide();
             
-            document.addEventListener("backbutton", onBackKeyDown, false);
+             document.addEventListener("backbutton", onBackKeyDown, false);
 		}
 		
 		function errorfunction()
@@ -62,54 +68,77 @@
 		}
 		
 		 function checkConnection() 
-		{
-			
-			var networkState = navigator.connection.type;
+                        {
+                            
+                            var networkState = navigator.connection.type;
 
-			var states = {};
-			states[Connection.UNKNOWN]  = 'Unknown connection';
-			states[Connection.ETHERNET] = 'Ethernet connection';
-			states[Connection.WIFI]     = 'WiFi connection';
-			states[Connection.CELL_2G]  = 'Cell 2G connection';
-			states[Connection.CELL_3G]  = 'Cell 3G connection';
-			states[Connection.CELL_4G]  = 'Cell 4G connection';
-			states[Connection.CELL]     = 'Cell generic connection';
-			states[Connection.NONE]     = 'No network connection';
-			
-			if(states[networkState] == 'No network connection')
-			{
-				 
-			  navigator.notification.confirm(
-						'No internet connect. please connect the internet and relaunch the application.', 
-						onConfirmQuit, 
-						'No internet connect', 
-						'OK,Cancel'  
-					);
-			}
-			
-		}
+                            var states = {};
+                            states[Connection.UNKNOWN]  = 'Unknown connection';
+                            states[Connection.ETHERNET] = 'Ethernet connection';
+                            states[Connection.WIFI]     = 'WiFi connection';
+                            states[Connection.CELL_2G]  = 'Cell 2G connection';
+                            states[Connection.CELL_3G]  = 'Cell 3G connection';
+                            states[Connection.CELL_4G]  = 'Cell 4G connection';
+                            states[Connection.CELL]     = 'Cell generic connection';
+                            states[Connection.NONE]     = 'No network connection';
+
+                          //  alert('Connection type: ' + states[networkState]);
+                            
+                            if(states[networkState] == 'No network connection')
+                            {
+                                //alert('Connection type: ' + states[networkState]);
+                                
+                                 
+                                              navigator.notification.confirm(
+                                                        'No internet connect. please connect the internet and relaunch the application.', 
+                                                        onConfirmQuit, 
+                                                        'No internet connect', 
+                                                        'OK,Cancel'  
+                                                    );
+                                
+                                
+                                        function onConfirmQuit(button)
+                                              {
+                                                     if(button == "1")
+                                                     {
+
+                                                         navigator.app.exitApp(); 
+
+                                                     }
+
+                                              }
+                                           
+
+                                                                
+                                                                
+                            }
+                            
+                        }
         
         function onBackKeyDown()
-		{
-			  
-		  navigator.notification.confirm
-					('Are you sure ?', 
-					  onConfirmQuit, 
-					  'Quit?', 
-					  'OK,Cancel'  
-						);
-		}
+            {
+                  
+                                      navigator.notification.confirm
+                                                ('Are you sure ?', 
+                                                  onConfirmQuit, 
+                                                  'Quit?', 
+                                                  'OK,Cancel'  
+                                                    );
+                                           
+                         function onConfirmQuit(button)
+                                      {
+                                             if(button == "1")
+                                             {
+
+                                                 navigator.app.exitApp(); 
+
+                                             }
+
+                                      }
+                
+            }
         
-        function onConfirmQuit(button)
-		  {
-			 if(button == "1")
-			 {
-			  
-				 navigator.app.exitApp(); 
-								   
-			 }
-										
-		  }
+       
 
 		
 		//	navigator.splashscreen.hide();
