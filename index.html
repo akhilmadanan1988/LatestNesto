@@ -24,8 +24,11 @@
 			
 			if(localStorage != null)
 			{
+                 navigator.splashscreen.hide();
+                
 				if(localStorage.CardNumber != '' && typeof localStorage.CardNumber != 'undefined')
 				{
+                    
 					window.location="pointDetails.html";
 				}
 				else
