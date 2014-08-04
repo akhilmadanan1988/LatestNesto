@@ -1,15 +1,15 @@
   document.addEventListener("deviceready", onDeviceReady, true);
 
     var pushNotification;
-alert(12345);
+
      function onDeviceReady() {
 			
-		
-         
+		alert(device.platform);
+  
          pushNotification = window.plugins.pushNotification;
          
          
-         
+                alert(device.platform);
          if ( device.platform == 'android' || device.platform == 'Android' )
                     {
                       
