@@ -93,14 +93,15 @@
         
         function onBackKeyDown()
 		{
-			    //alert($.mobile.activePage[0].baseURI);
+			  
             
              var current_url = $.mobile.activePage[0].baseURI;
+            alert(current_url);
             
            if(current_url == "file:///android_assest/www/index.html")
             {
+              alert(current_url);
             
-            var current_url = $.mobile.activePage[0].baseURI;
 		  navigator.notification.confirm
 					('Are you sure ?', 
 					  onConfirmQuit, 
