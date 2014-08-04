@@ -20,7 +20,7 @@
             alert(localStorage.CardNumber);
 			if(localStorage != null)
 			{
-				if(localStorage.CardNumber != '')
+				if(localStorage.CardNumber != '' || typeof localStorage.CardNumber != 'undefined')
 				{
 					window.location="pointDetails.html";
 				}
