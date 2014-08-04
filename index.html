@@ -17,10 +17,11 @@
 	
 	<script type="text/javascript" charset="utf-8">
 		$(document).ready(function () {
+              alert(localStorage);
             alert(localStorage.CardNumber);
 			if(localStorage != null)
 			{
-				if(localStorage.CardNumber != '' || typeof localStorage.CardNumber != 'undefined')
+				if(localStorage.CardNumber != '' && typeof localStorage.CardNumber != 'undefined')
 				{
 					window.location="pointDetails.html";
 				}
