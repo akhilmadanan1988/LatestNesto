@@ -19,6 +19,8 @@
 		$(document).ready(function () {
 //              alert(localStorage);
 //            alert(localStorage.CardNumber);
+            checkConnection();
+            
 			if(localStorage != null)
 			{
 				if(localStorage.CardNumber != '' && typeof localStorage.CardNumber != 'undefined')
@@ -27,7 +29,7 @@
                     }
 				else
 				{
-                    checkConnection();
+                    
 				
 					localStorage.DeviceType = 1;
 					var reqData = {"AppType":""+ localStorage.DeviceType +"","DeviceId":""+ localStorage.DeviceId +"","IPAddress":"", "UserId": ""+ 0 + ""}
@@ -56,6 +58,7 @@
 			$('#imgPromotionImage2').attr('src', localStorage.PromotionImage2);
             
 			navigator.splashscreen.hide();
+            
             
             document.addEventListener("backbutton", onBackKeyDown, false);
 		}
