@@ -1,12 +1,12 @@
 var email_pattern = /^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
 var legalCharacters_pattern = /[a-zA-Z0-9!”$&’@#%=?&quot;().*\+\-,\/;\[\\\]\^_`{|}~ ]+$/;
+
 $(document).ready(function () {
     onProfileLoad();
-});
-function onProfileLoad() {
-    	
-  
-    if (localStorage.CardNumber == "") {       
+});function onProfileLoad() {
+
+
+    if (localStorage.CardNumber == "") {
         window.location = "index.html";
     }
 
@@ -16,21 +16,21 @@ function onProfileLoad() {
         showMessage("Profile updated successfully");
     }
 
+     if (localStorage.CardNumber.trim() != '' && localStorage.CustomerName.trim() != '' && localStorage.Email.trim() != '' && localStorage.CustomerName.trim() != '') {
 
-    $("#cardnumber").text(localStorage.CardNumber);
-    $("#name").text(localStorage.CustomerName);
-    $("#email").text(localStorage.Email);
-    $("#country").text(localStorage.CountryID);
+        $("#cardnumber").text(localStorage.CardNumber);
+        $("#name").text(localStorage.CustomerName);
+        $("#email").text(localStorage.Email);
+        $("#country").text(localStorage.CountryName);
+    }
+    else {
+        //TODO: If there is no content available, call API GetAuthenticatedUserDetails   
 
-    ////TODO: If there is no content available, call API GetAuthenticatedUserDetails 
-    //var AppType = "AppType2";
-    //var DeviceId = "DeviceId2";
-    //var IPAddress = "192.255.0.255";
-    //var UserId = 1;
 
-    //var reqData = { "AppType": "" + AppType + "", "DeviceId": "" + DeviceId2 + "", "IPAddress": "" + IPAddress + "", "UserId": UserId } 
-    //ajaxcall("GetAuthenticatedUserDetails", reqData, IsAuthenticatedUserDetailsResponseSuccess, errorfunction);
+        var reqData = { "DeviceId": "" + localStorage.DeviceId + "", "UserId": "" + localStorage.UserId + "", "CountryId": localStorage.CountryId }
+        ajaxcall("GetAuthenticatedUserDetails", reqData, IsAuthenticatedUserDetailsResponseSuccess, errorfunction);
 
+    }
 }
 
 
@@ -42,12 +42,11 @@ function logOut() {
     localStorage.LastLoginDate = "";
     localStorage.UserId = "";
 
-
-
     localStorage.RedeemablePoints = "";
     localStorage.RedeemedPoints = "";
     localStorage.TotalPoints = "";
-    window.location = "index.html";
+	alert(localStorage.PromotionImage1);
+    //window.location = "index.html";
 
 }
 
@@ -66,20 +65,19 @@ function showMessage(message, isSuccess) {
 
 function errorfunction() {
     showMessage("Some error occured, please try after sometime", 0);
-    //    alert("Some error occured, please try after sometime");
 }
 
 function IsAuthenticatedUserDetailsResponseSuccess(result) {
     if (result.ApiResponse.StatusCode == 1) {
 
-        //Save User Id in Local Database
+		//Save User Id in Local Database
         localStorage.CardNumber = result.UserDetail.CardNumber;
         localStorage.CountryID = result.UserDetail.CountryID;
         localStorage.CustomerName = result.UserDetail.CustomerName;
         localStorage.Email = result.UserDetail.Email;
         localStorage.LastLoginDate = result.UserDetail.LastLoginDate;
         localStorage.UserId = result.UserDetail.UserId;
-
+        localStorage.CountryName = result.UserDetail.CountryName;
         localStorage.RedeemablePoints = result.UserPointDetail.RedeemablePoints;
         localStorage.RedeemedPoints = result.UserPointDetail.RedeemedPoints;
         localStorage.TotalPoints = result.UserPointDetail.TotalPoints;
@@ -87,7 +85,7 @@ function IsAuthenticatedUserDetailsResponseSuccess(result) {
         $("#cardnumber").text(localStorage.CardNumber);
         $("#name").text(localStorage.CustomerName);
         $("#email").text(localStorage.Email);
-        $("#country").text(localStorage.CountryID);
+        $("#country").text(localStorage.CountryName);
         // showMessage(result.ApiResponse.Details, 1);
     }
     else {

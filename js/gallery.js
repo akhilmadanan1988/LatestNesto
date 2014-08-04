@@ -1,15 +1,11 @@
 $(document).ready(function () {
-    //   $("ul#ulImages").append("<li><a href='assets/1.jpg'> <img src='assets/thumbs/1.jpg' alt='Image 01' /></a></li>");
     onGalleryLoad();
-    //     $("ul#ulImages").append("<li><a href='assets/1.jpg'> <img src='assets/thumbs/1.jpg' alt='Image 01' /></a></li>");
 });
 function onGalleryLoad() {
 
     var PromotionId = getUrlVars()["PromotionId"];
-    //$("ul#ulImages").append("<li><a href='assets/1.jpg'> <img src='assets/thumbs/1.jpg' alt='Image 01' /></a></li>");
     var reqData = { "PromotionId": PromotionId }
     ajaxcall("GetPromotionDetails", reqData, IsGetPromotionDetailsResponseSuccess, errorfunction);
-
 }
 
 function showMessage(message, isSuccess) {
@@ -26,19 +22,16 @@ function showMessage(message, isSuccess) {
 }
 
 function errorfunction() {
-    //showMessage("Some error occured, please try after sometime", 0);
     alert("Some error occured, please try after sometime");
 }
 
 function IsGetPromotionDetailsResponseSuccess(result) {
-    //alert(result);
-    // $("ul#ulImages").append("<li><a href='assets/1.jpg'> <img src='assets/thumbs/1.jpg' alt='Image 01' /></a></li>");
-
-  //  alert(result.ApiResponse.StatusCode);
     if (result.ApiResponse.StatusCode == 1) {
         $.each(result.PromotionFileDetails, function (index, value) {
             $("ul#ulImages").append("<li><a href=" + value.PromotionFileUrl + "> <img src=" + value.PromotionFileUrl + " alt=PromotionImage" + index + "/></a></li>");
         });
+		//process the created div and convert it to an image gallery
+		TouchNSwipe.init();
     }
     else {
 

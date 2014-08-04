@@ -1,4 +1,5 @@
 $(document).ready(function () {
+    showProfileLink();
     fillCountry();
     onPromotionsLoad(localStorage.CountryID);
 });
@@ -6,6 +7,19 @@ function onPromotionsLoad(CountryId) {
 
     var reqData = { "CountryId": CountryId }
     ajaxcall("GetPromotionData", reqData, IsGetPromotionDataResponseSuccess, errorfunction);
+
+}
+
+
+function showProfileLink() {
+
+    if (localStorage.CardNumber.trim() == "") {
+        // myButton1
+        $('#myButton1').hide();
+    }
+    else {
+        $('#myButton1').show();
+    }
 
 }
 
@@ -22,14 +36,14 @@ function fillCountry() {
 
 
 function IsGetSettingsContentResponseSuccess(result) {
-  
+
     if (result.ApiResponse.StatusCode == 1) {
         $('#select-choice-1').empty();
 
         $.each(result.ServiceAvailableCountries, function (index, value) {
             $('#select-choice-1').append(new Option(value.CountryName, value.CountryId));
         });
-
+		$("#select-choice-1-button span").text("United Arab Emrites");
     }
     else {
         showMessage(result.ApiResponse.Details, 0);
@@ -74,20 +88,20 @@ function IsGetPromotionDataResponseSuccess(result) {
         $.each(result.PromotionDetailsList, function (index, value) {
             //  alert(value.PromotionCategory.toLowerCase());
             // alert(value.PromotionThumbnail);
-           // alert(value.PromotionId);
+            // alert(value.PromotionId);
             if (value.PromotionCategory.toLowerCase() == "seasonal promotion") {
                 isSeasonalPromotion = 1;
                 var data = "<div class='col-md-12 promotionArea promotionProductDetail' ><table class='table tableListing tableContent' style='margin: 13px 0;'>"
                 data = data.concat("<tbody><tr>");
-                data = data.concat("<td width='45%'><a href=gallery.html?PromotionId=" + value.PromotionId  + " data-transition='slide'><img src=" + value.PromotionThumbnail + " width='240' class='acordionProduct' /></a></td>");
+                data = data.concat("<td width='45%'><a href=gallery.html?PromotionId=" + value.PromotionId + " data-transition='slide'><img src=" + value.PromotionThumbnail + " width='240' class='acordionProduct' /></a></td>");
                 data = data.concat("<td class='productProDetail'><h4>" + value.PromotionName + "</h4><h5>" + value.PromotionAvailableStores + "</h5><small>From " + value.PromotionTimePeriod + " </small></td>");
                 data = data.concat("</tr> </tbody>");
                 data = data.concat("</table></div>");
-             
+
                 $('#divSeasonalPromotions').find('.ui-collapsible-content').append(data);
-              
-               // $('#hedSeasonalPromotions').addClass('ui-collapsible-heading');
-                
+
+                // $('#hedSeasonalPromotions').addClass('ui-collapsible-heading');
+
             }
             else if (value.PromotionCategory.toLowerCase() == "special campaigns") {
                 isSpecialCampaigns = 1;

@@ -89,21 +89,12 @@ function onSave() {
 
     if (isOk) {
         var reqData;
-       
-        var encryptCurrentPassword = EncryptPassword(currentPassword);
-        var encryptNewPassword = EncryptPassword(newPassword);
-        reqData = { "CardNumber": "" + cardNumber + "", "Email": "" + email + "", "Name": "" + name + "", "CurrentPassword": "" + encryptCurrentPassword + "", "NewPassword": "" + encryptNewPassword + "" }
+        var encryptCurrentPassword = "";
+        if (currentPassword.trim() != "")
+            encryptCurrentPassword = EncryptPassword(currentPassword);
 
-        //if (chkbxChangePassword == "false")
-        //{
-          
-        //    reqData = { "CardNumber": "" + cardNumber + "", "Email": "" + email + "", "Name": "" + name + "", "CurrentPassword": "" + encryptCurrentPassword + "", "NewPassword": "" + encryptNewPassword + "" }
-        //}
-        //else {
-           
-        //    reqData = { "CardNumber": "" + cardNumber + "", "Email": "" + email + "", "Name": "" + name + "" }
-            
-        //}
+        reqData = { "CardNumber": "" + cardNumber + "", "Email": "" + email + "", "Name": "" + name + "", "CurrentPassword": "" + encryptCurrentPassword.trim() + "", "NewPassword": "" + newPassword.trim() + "" }
+
 
         ajaxcall("UpdateUserProfile", reqData, IsUpdateUserProfileResponseSuccess, errorfunction);
     }

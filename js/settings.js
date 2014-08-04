@@ -34,7 +34,7 @@ function errorfunction() {
 function onSettingsLoad() {
 
     var UserId = localStorage.UserId;
-    var DeviceId = localStorage.DeviceId ;
+    var DeviceId = localStorage.DeviceId;
     var reqData = { "DeviceId": "" + DeviceId + "", "UserId": UserId }
 
     //TODO: Check for the local DB if contents re available.If no details are foung then call tha API
@@ -45,31 +45,22 @@ function onSettingsLoad() {
 function IsGetSettingsContentResponseSuccess(result) {
 
     if (result.ApiResponse.StatusCode == 1) {
-              
+
         $("#version").text(localStorage.version);
-        
+
         $('#select-choice-1').empty();
-    //    localStorage.ServiceAvailableCountries = result.ServiceAvailableCountries;
-        //var defaultSelected = false;
-        //var nowSelected = true;
+        var CountryName = "";
+      
         $.each(result.ServiceAvailableCountries, function (index, value) {
-            //if (index == 0) {
-            //    defaultSelected = false;
-            //    nowSelected = true;
-            //}
-            //else {
-            //    defaultSelected = false;
-            //    nowSelected = false;
-            //}
-           // $('#select-choice-1').append(new Option(value.CountryName, value.CountryId, defaultSelected, nowSelected));
+            if (index == 0) {
+                CountryName = value.CountryName;
+            }
 
             $('#select-choice-1').append(new Option(value.CountryName, value.CountryId));
-           
-        });
-       // $('#select-choice-1').find('option:first').attr('selected', 'selected');
-      //  $('#select-choice-1 option:eq(0)').attr('selected', 'selected');
-        //$("#select-choice-1").val(0);
 
+        });
+
+        $("#select-choice-1-button span").text(CountryName);
         $.each(result.PageDetails, function (index, value) {
             if (value.PageId == 5) {
                 $("#loyalityProgram").attr('href', value.SeoUrl);
@@ -98,7 +89,7 @@ function changeNotification() {
     if (checkboxNotifications == "false") {
         Status = "Off";
     }
-   
+
     var DeviceId = localStorage.DeviceId;
     var reqData = { "DeviceId": "" + DeviceId + "", "Status": Status }
 

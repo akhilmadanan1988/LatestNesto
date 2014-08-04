@@ -1,5 +1,4 @@
 $(document).ready(function () {
-
 	$('#imgPromotionImage1').attr('src', localStorage.PromotionImage1)
     $('#imgPromotionImage2').attr('src', localStorage.PromotionImage2)
     
@@ -52,6 +51,7 @@ function IsLoginResponseSuccess(result)
 		localStorage.CustomerName = result.UserDetail.CustomerName;
 		localStorage.Email = result.UserDetail.Email;
 		localStorage.CountryID = result.UserDetail.CountryID;
+		localStorage.CountryName = result.UserDetail.CountryName;
 		localStorage.UserId = result.UserDetail.UserId;
 		
 		
