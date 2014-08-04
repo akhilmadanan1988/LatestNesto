@@ -19,59 +19,9 @@
 		$(document).ready(function () {
 //              alert(localStorage);
 //            alert(localStorage.CardNumber);
-            checkConnection();
+           
             
-			if(localStorage != null)
-			{
-				if(localStorage.CardNumber != '' && typeof localStorage.CardNumber != 'undefined')
-                    {
-                        window.location="pointDetails.html";
-                    }
-				else
-				{
-                    
-				
-					localStorage.DeviceType = 1;
-					var reqData = {"AppType":""+ localStorage.DeviceType +"","DeviceId":""+ localStorage.DeviceId +"","IPAddress":"", "UserId": ""+ 0 + ""}
-					ajaxcall("UpdateUserDetailsAndFetchDefaultCountry",reqData,DataFetchedInIndex,errorfunction);
-                    
-                    	
-				}
-			}
-        });
-		
-		function DataFetchedInIndex(result)
-		{
-			if(result.ApiResponse.StatusCode == 1)
-			{
-				if(result.PromotionList != null)
-				{
-					if(result.PromotionList[0] != null)
-						localStorage.PromotionImage1= result.PromotionList[0].PromotionThumbnail;
-
-					if(result.PromotionList[1] != null)
-						localStorage.PromotionImage2 = result.PromotionList[1].PromotionThumbnail;
-				}
-			}
-            
-			$('#imgPromotionImage1').attr('src', localStorage.PromotionImage1);
-			$('#imgPromotionImage2').attr('src', localStorage.PromotionImage2);
-            
-			navigator.splashscreen.hide();
-            
-            
-            document.addEventListener("backbutton", onBackKeyDown, false);
-		}
-		
-		function errorfunction()
-		{
-			navigator.splashscreen.hide();
-		}
-		
-		 function checkConnection() 
-		{
-			
-			var networkState = navigator.connection.type;
+            var networkState = navigator.connection.type;
 
 			var states = {};
 			states[Connection.UNKNOWN]  = 'Unknown connection';
@@ -104,6 +54,66 @@
 
                       }
 			}
+            
+          else
+            {
+            
+			if(localStorage != null)
+			{
+				if(localStorage.CardNumber != '' && typeof localStorage.CardNumber != 'undefined')
+                    {
+                        window.location="pointDetails.html";
+                    }
+				else
+				{
+                    
+				
+					localStorage.DeviceType = 1;
+					var reqData = {"AppType":""+ localStorage.DeviceType +"","DeviceId":""+ localStorage.DeviceId +"","IPAddress":"", "UserId": ""+ 0 + ""}
+					ajaxcall("UpdateUserDetailsAndFetchDefaultCountry",reqData,DataFetchedInIndex,errorfunction);
+                    
+                    	
+				}
+			}
+            
+        }
+        });
+        
+        
+            
+            		
+		function DataFetchedInIndex(result)
+		{
+			if(result.ApiResponse.StatusCode == 1)
+			{
+				if(result.PromotionList != null)
+				{
+					if(result.PromotionList[0] != null)
+						localStorage.PromotionImage1= result.PromotionList[0].PromotionThumbnail;
+
+					if(result.PromotionList[1] != null)
+						localStorage.PromotionImage2 = result.PromotionList[1].PromotionThumbnail;
+				}
+			}
+            
+			$('#imgPromotionImage1').attr('src', localStorage.PromotionImage1);
+			$('#imgPromotionImage2').attr('src', localStorage.PromotionImage2);
+            
+			navigator.splashscreen.hide();
+            
+            
+            document.addEventListener("backbutton", onBackKeyDown, false);
+		}
+		
+		function errorfunction()
+		{
+			navigator.splashscreen.hide();
+		}
+		
+		 function checkConnection() 
+		{
+			
+			
 			
 		}
         
