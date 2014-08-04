@@ -18,7 +18,7 @@
 	<script type="text/javascript" charset="utf-8">
 		$(document).ready(function () {
             alert(localStorage.CardNumber);
-			if(localStorage.CardNumber != "undefined")
+			if(typeof localStorage.CardNumber != 'undefined')
 			{
 				window.location="pointDetails.html";
 			}
