@@ -17,25 +17,13 @@
 	
 	<script type="text/javascript" charset="utf-8">
 		$(document).ready(function () {
-            //alert(localStorage.CardNumber);
-            
-            document.addEventListener("deviceready", onDeviceReady, true);
-        
-        function onDeviceReady()
-            {
-                //alert(localStorage.CardNumber);
-                
-                if(typeof(Storage) !== "undefined") {
-    alert("storage available");
-} else {
-    alert("storage not available");
-    // Sorry! No Web Storage support..
-}
-                
+            alert(localStorage);
+                    
                checkConnection(); 
                 
-                
-                if(typeof localStorage.CardNumber != 'undefined' || localStorage.CardNumber != '')
+                if(localStorage != null)
+                {
+                   if(typeof localStorage.CardNumber != 'undefined' || localStorage.CardNumber != '')
                  {
                     window.location="pointDetails.html";
                  }
@@ -46,7 +34,9 @@
                     ajaxcall("UpdateUserDetailsAndFetchDefaultCountry",reqData,DataFetchedInIndex,errorfunction);
                  }
             
-            }
+                }
+                
+       
 			
 		});
 		
