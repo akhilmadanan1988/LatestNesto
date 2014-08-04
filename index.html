@@ -94,22 +94,33 @@
         function onBackKeyDown()
 		{
 			  
-		  navigator.notification.confirm
-					('Are you sure ?', 
+		   var current_url = $.mobile.activePage[0].baseURI;
+               
+            
+            if(current_url == "file:///android_assest/www/index.html")
+            {
+                
+		  navigator.notification.confirm('Are you sure ?', 
 					  onConfirmQuit, 
 					  'Quit?', 
 					  'OK,Cancel'  
 						);
+            
+                
+                
+             function onConfirmQuit(button)
+                  {
+                    if(button == "1")
+                     {
+
+                         navigator.app.exitApp(); 
+
+                     }
+
+                  }
 		}
         
-        function onConfirmQuit(button)
-		  {
-			 if(button == "1")
-			 {
-			   navigator.app.exitApp(); 
-			 }
-										
-		  }
+        }
 
 		
 		//	navigator.splashscreen.hide();
