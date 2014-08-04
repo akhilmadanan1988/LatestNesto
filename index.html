@@ -20,19 +20,19 @@
 //              alert(localStorage);
 //            alert(localStorage.CardNumber);
             //checkConnection();
+            navigator.splashscreen.hide();
             
 			if(localStorage != null)
 			{
 				if(localStorage.CardNumber != '' && typeof localStorage.CardNumber != 'undefined')
                     {
-                        navigator.splashscreen.hide();
+                        
                         window.location="pointDetails.html";
                     }
 				else
 				{
                     
-				 navigator.splashscreen.hide();
-					localStorage.DeviceType = 1;
+				 	localStorage.DeviceType = 1;
 					var reqData = {"AppType":""+ localStorage.DeviceType +"","DeviceId":""+ localStorage.DeviceId +"","IPAddress":"", "UserId": ""+ 0 + ""}
 					ajaxcall("UpdateUserDetailsAndFetchDefaultCountry",reqData,DataFetchedInIndex,errorfunction);
                     
