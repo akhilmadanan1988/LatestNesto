@@ -87,6 +87,17 @@
 						'No internet connect', 
 						'OK,Cancel'  
 					);
+                
+                 function onConfirmQuit(button)
+                      {
+                         if(button == "1")
+                         {
+
+                             navigator.app.exitApp(); 
+
+                         }
+
+                      }
 			}
 			
 		}
@@ -100,18 +111,20 @@
 					  'Quit?', 
 					  'OK,Cancel'  
 						);
+            
+             function onConfirmQuit(button)
+                  {
+                     if(button == "1")
+                     {
+
+                         navigator.app.exitApp(); 
+
+                     }
+
+                  }
 		}
         
-        function onConfirmQuit(button)
-		  {
-			 if(button == "1")
-			 {
-			  
-				 navigator.app.exitApp(); 
-								   
-			 }
-										
-		  }
+       
 
 		
 		//	navigator.splashscreen.hide();
